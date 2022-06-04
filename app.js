@@ -28,7 +28,7 @@ app.post('/', (req, res)=>{
                 const weatherDescription = weatherData.weather[0].description;
                 const icon = weatherData.weather[0].icon;
      
-                res.write(`<h1>The weather in ${place} is ${temp} degrees Celsius</h1>`);
+                res.write(`<h1>The weather in ${place} is ${temp}&#8451;</h1>`);
                 res.write(`<p>The weather description is currently "${weatherDescription}"</p>`);
                 res.write(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`)
                 res.send()
