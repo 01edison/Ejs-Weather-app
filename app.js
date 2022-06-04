@@ -35,7 +35,7 @@ app.post('/', (req, res)=>{
              })
         }
         else{
-            res.send("oops cant find page, baby")
+            res.send("oops cant find page!")
         }
     })
 })
