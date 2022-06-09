@@ -6,15 +6,18 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.set('view engine', 'ejs');
+
+let temp, weatherDescription, place, icon;
 
 app.get('/', (req, res)=>{
-    res.sendFile(__dirname+"/index.html");
+    res.render('index', {temperature: temp, description: weatherDescription, place: place, icon: icon})
     
 })
 
 app.post('/', (req, res)=>{
     const q = req.body.cityName;
-    const apiKey = "YOUR_API_KEY";
+    const apiKey = "057be26a4da93af078568dcb3ef55c3f";
     const unit = "metric"
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${q}&appid=${apiKey}&units=${unit}`
     
@@ -27,11 +30,9 @@ app.post('/', (req, res)=>{
                 const temp = weatherData.main.temp;
                 const weatherDescription = weatherData.weather[0].description;
                 const icon = weatherData.weather[0].icon;
-     
-                res.write(`<h1>The weather in ${place} is ${temp}degrees Celcius</h1>`);
-                res.write(`<p>The weather description is currently "${weatherDescription}"</p>`);
-                res.write(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`)
-                res.send()
+                
+            res.render("index", {place:`The weather in ${place} is`, temperature: `${temp}℃`, description: `The weather description is currently "${weatherDescription}"`})
+                
              })
         }
         else{
@@ -47,3 +48,7 @@ app.post('/', (req, res)=>{
 app.listen(process.env.PORT || 3000, ()=> {
     console.log('listening on port 3000')
 })
+
+
+
+// http://openweathermap.org/img/wn/02n@2x.png"

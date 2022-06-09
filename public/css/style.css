@@ -26,6 +26,10 @@ input:focus{
     outline-style: none;
 }
 
+.weather-report{
+    margin-top: 3rem;
+}
+
 @keyframes fadeAnimation {
     0% {
         opacity: 0;
