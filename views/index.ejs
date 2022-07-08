@@ -21,10 +21,10 @@
         <button type="submit" class="btn btn-dark">Go</button>
       </form>
       <div class="weather-report">
-        <% if (!icon) {%>
+        <% if (!place) {%>
         <p class="display-4"><%= errorMsg %></p>
         <% }else {%>
-        <h3><%=place%> <%= temperature %></h3>
+        <h3>The temperature in <%=place%> is <%= temperature %>°C</h3>
         <p class="weather-description"><%= description %></p>
         <img
           src="http://openweathermap.org/img/wn/<%= icon %>@2x.png"
