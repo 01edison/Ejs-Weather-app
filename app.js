@@ -29,7 +29,7 @@ app.post("/", (req, res) => {
     .get("https://api.openweathermap.org/data/2.5/weather", {
       params: {
         q,
-        appid: "057be26a4da93af078568dcb3ef55c3f",
+        appid: apiKey,
         units: unit,
       },
     })
